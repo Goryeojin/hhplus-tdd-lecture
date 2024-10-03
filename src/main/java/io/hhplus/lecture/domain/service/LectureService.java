@@ -23,6 +23,7 @@ public class LectureService {
     public Lecture checkStatus(Long lectureId) {
         // 특정 특강 조회
         Lecture lecture = repository.findById(lectureId);
+        System.out.println(lecture);
         // 신청일이 특강일 이전인지 확인
         lecture.checkLectureDate();
         // 수용 인원 확인
