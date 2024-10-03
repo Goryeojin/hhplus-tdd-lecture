@@ -1,13 +1,13 @@
 package io.hhplus.lecture.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.hhplus.lecture.api.common.exception.CustomException;
-import io.hhplus.lecture.api.common.exception.ErrorCode;
+import io.hhplus.lecture.support.exception.CustomException;
+import io.hhplus.lecture.support.exception.ErrorCode;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
 
-import static io.hhplus.lecture.api.common.exception.ErrorCode.FULL_CAPACITY;
+import static io.hhplus.lecture.support.exception.ErrorCode.FULL_CAPACITY;
 
 @Builder
 public record Lecture (

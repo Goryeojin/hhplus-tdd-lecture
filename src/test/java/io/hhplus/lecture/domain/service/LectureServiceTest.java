@@ -1,7 +1,7 @@
 package io.hhplus.lecture.domain.service;
 
-import io.hhplus.lecture.api.common.exception.CustomException;
-import io.hhplus.lecture.api.common.exception.ErrorCode;
+import io.hhplus.lecture.support.exception.CustomException;
+import io.hhplus.lecture.support.exception.ErrorCode;
 import io.hhplus.lecture.domain.model.Lecture;
 import io.hhplus.lecture.domain.repository.LectureRepository;
 import org.junit.jupiter.api.BeforeEach;

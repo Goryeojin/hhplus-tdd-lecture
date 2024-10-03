@@ -1,7 +1,7 @@
 package io.hhplus.lecture.domain.model;
 
-import io.hhplus.lecture.api.common.exception.CustomException;
-import io.hhplus.lecture.api.common.exception.ErrorCode;
+import io.hhplus.lecture.support.exception.CustomException;
+import io.hhplus.lecture.support.exception.ErrorCode;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
-import static org.junit.jupiter.api.Assertions.*;
 
 class LectureTest {
     private static final Long LECTURE_ID = 1L;

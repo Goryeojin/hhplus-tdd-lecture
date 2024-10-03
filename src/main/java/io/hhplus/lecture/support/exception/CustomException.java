@@ -1,4 +1,4 @@
-package io.hhplus.lecture.api.common.exception;
+package io.hhplus.lecture.support.exception;
 
 import lombok.Getter;
 

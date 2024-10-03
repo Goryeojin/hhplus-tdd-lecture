@@ -1,7 +1,7 @@
 package io.hhplus.lecture.application.facade;
 
-import io.hhplus.lecture.api.common.exception.CustomException;
-import io.hhplus.lecture.api.common.exception.ErrorCode;
+import io.hhplus.lecture.support.exception.CustomException;
+import io.hhplus.lecture.support.exception.ErrorCode;
 import io.hhplus.lecture.application.dto.LectureResponse;
 import io.hhplus.lecture.application.dto.RegisterRequest;
 import io.hhplus.lecture.domain.model.Lecture;
