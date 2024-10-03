@@ -28,6 +28,7 @@ public class RegistrationService {
     // 특강 중복 신청 여부 확인
     public void checkRegistered(Long lectureId, String studentId) {
         if (repository.checkRegistered(lectureId, studentId)) {
+            System.out.println("true");
             throw new CustomException(ErrorCode.ALREADY_REGISTERED);
         }
     }
