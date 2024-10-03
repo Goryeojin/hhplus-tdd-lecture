@@ -5,6 +5,7 @@ import io.hhplus.lecture.api.common.exception.ErrorCode;
 import io.hhplus.lecture.application.dto.LectureResponse;
 import io.hhplus.lecture.application.dto.RegisterRequest;
 import io.hhplus.lecture.domain.model.Lecture;
+import io.hhplus.lecture.domain.model.Registration;
 import io.hhplus.lecture.domain.service.LectureService;
 import io.hhplus.lecture.domain.service.RegistrationService;
 import org.junit.jupiter.api.BeforeEach;
@@ -124,4 +125,21 @@ class LectureFacadeTest {
         assertThat(response.lectures()).hasSize(1);
         verify(lectureService).lecturesAvailable(lectureDate);
     }
+
+    @Test
+    @DisplayName("특정 학생이 신청한 특강 목록을 조회한다.")
+    void getRegisteredLecturesByStudentId() {
+        // given
+        List<Registration> mockRegistrations = Collections.singletonList(mock(Registration.class));
+        when(registrationService.registrations(STUDENT_ID)).thenReturn(mockRegistrations);
+
+        // when
+        LectureResponse response = lectureFacade.registrations(STUDENT_ID);
+
+        // then
+        assertThat(response).isNotNull();
+        assertThat(response.registrations()).hasSize(1);
+        verify(registrationService).registrations(STUDENT_ID);
+    }
+
 }

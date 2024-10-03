@@ -3,6 +3,7 @@ package io.hhplus.lecture.application.facade;
 import io.hhplus.lecture.application.dto.LectureResponse;
 import io.hhplus.lecture.application.dto.RegisterRequest;
 import io.hhplus.lecture.domain.model.Lecture;
+import io.hhplus.lecture.domain.model.Registration;
 import io.hhplus.lecture.domain.service.LectureService;
 import io.hhplus.lecture.domain.service.RegistrationService;
 import lombok.RequiredArgsConstructor;
@@ -35,5 +36,11 @@ public class LectureFacade {
     public LectureResponse lecturesAvailable(LocalDate lectureDate) {
         List<Lecture> lectures = lectureService.lecturesAvailable(lectureDate);
         return LectureResponse.builder().lectures(lectures).build();
+    }
+
+    // 특강 신청 목록 조회
+    public LectureResponse registrations(String studentId) {
+        List<Registration> registrations = registrationService.registrations(studentId);
+        return LectureResponse.builder().registrations(registrations).build();
     }
 }

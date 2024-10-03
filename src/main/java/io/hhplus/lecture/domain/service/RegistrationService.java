@@ -2,9 +2,12 @@ package io.hhplus.lecture.domain.service;
 
 import io.hhplus.lecture.api.common.exception.CustomException;
 import io.hhplus.lecture.api.common.exception.ErrorCode;
+import io.hhplus.lecture.domain.model.Registration;
 import io.hhplus.lecture.domain.repository.RegistrationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +18,11 @@ public class RegistrationService {
     // 특강 신청 등록
     public void register(Long lectureId, String studentId) {
         repository.save(lectureId, studentId);
+    }
+
+    // 특강 신청 목록 조회
+    public List<Registration> registrations(String studentId) {
+        return repository.findByStudentId(studentId);
     }
 
     // 특강 중복 신청 여부 확인

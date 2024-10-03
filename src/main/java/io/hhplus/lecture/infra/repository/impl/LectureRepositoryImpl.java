@@ -3,7 +3,6 @@ package io.hhplus.lecture.infra.repository.impl;
 import io.hhplus.lecture.api.common.exception.CustomException;
 import io.hhplus.lecture.api.common.exception.ErrorCode;
 import io.hhplus.lecture.domain.model.Lecture;
-import io.hhplus.lecture.domain.model.LectureCapacity;
 import io.hhplus.lecture.domain.repository.LectureRepository;
 import io.hhplus.lecture.infra.entity.LectureCapacityEntity;
 import io.hhplus.lecture.infra.entity.LectureEntity;
@@ -70,10 +69,4 @@ public class LectureRepositoryImpl implements LectureRepository {
                         .build())
                 .toList();
     }
-
-    @Override
-    public List<LectureCapacity> capacities() {
-        return null;
-    }
-
 }
