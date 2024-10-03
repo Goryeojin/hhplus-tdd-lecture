@@ -69,12 +69,13 @@ class LectureServiceTest {
     @Test
     void 특정_특강_조회_및_수용_인원_확인() {
         // given
-        Lecture mockLecture = Lecture.builder()
-                .lectureId(LECTURE_ID)
-                .lectureTitle("test")
-                .capacity(30)
-                .currentCapacity(29)
-                .build();
+        Lecture mockLecture = mock(Lecture.class); // 모의 객체 생성
+        when(mockLecture.lectureId()).thenReturn(LECTURE_ID);
+        when(mockLecture.lectureTitle()).thenReturn("test");
+        when(mockLecture.capacity()).thenReturn(30);
+        when(mockLecture.currentCapacity()).thenReturn(29);
+        doNothing().when(mockLecture).checkLectureDate();
+
         given(lectureRepository.findById(LECTURE_ID)).willReturn(mockLecture);
 
         // when
@@ -105,6 +106,25 @@ class LectureServiceTest {
         // then
         assertEquals(ErrorCode.FULL_CAPACITY, exception.getErrorCode());
         verify(mockLecture).checkCapacity();
+    }
+
+    @Test
+    void 신청일이_특강일_이후라면_에러_반환() {
+        // given
+        Lecture mockLecture = mock(Lecture.class);
+        when(lectureRepository.findById(LECTURE_ID)).thenReturn(mockLecture);
+
+        doThrow(new CustomException(ErrorCode.LECTURE_REGISTRATION_CLOSED))
+                .when(mockLecture).checkLectureDate();
+
+        // when
+        CustomException exception = assertThrows(CustomException.class, () -> {
+            lectureService.checkStatus(LECTURE_ID);
+        });
+
+        // then
+        assertEquals(ErrorCode.LECTURE_REGISTRATION_CLOSED, exception.getErrorCode());
+        verify(mockLecture, never()).checkCapacity(); // 이후 메서드가 실행되지 않는지 검증
     }
 
     @Test

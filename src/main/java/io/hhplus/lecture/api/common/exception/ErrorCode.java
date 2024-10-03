@@ -16,7 +16,9 @@ public enum ErrorCode {
 
     ALREADY_REGISTERED(HttpStatus.CONFLICT, "이미 해당 특강에 신청되었습니다."),
 
-    FULL_CAPACITY(HttpStatus.CONFLICT, "해당 특강 신청은 정원 초과되었습니다.");
+    FULL_CAPACITY(HttpStatus.CONFLICT, "해당 특강 신청은 정원 초과되었습니다."),
+
+    LECTURE_REGISTRATION_CLOSED(HttpStatus.BAD_REQUEST, "해당 특강은 이미 종료되었습니다.");
 
     private final HttpStatus httpStatus;
     private final String message;

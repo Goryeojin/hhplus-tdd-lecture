@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -21,7 +22,11 @@ public class LectureService {
 
     // 특정 특강을 조회하고 수용 인원을 확인한다.
     public Lecture checkStatus(Long lectureId) {
+        // 특정 특강 조회
         Lecture lecture = repository.findById(lectureId);
+        // 신청일이 특강일 이전인지 확인
+        lecture.checkLectureDate();
+        // 수용 인원 확인
         lecture.checkCapacity();
         return lecture;
     }

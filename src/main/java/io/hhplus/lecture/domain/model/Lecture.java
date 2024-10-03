@@ -2,6 +2,7 @@ package io.hhplus.lecture.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.hhplus.lecture.api.common.exception.CustomException;
+import io.hhplus.lecture.api.common.exception.ErrorCode;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
@@ -22,6 +23,13 @@ public record Lecture (
     LocalDateTime registrationDate,
     String studentId
 ) {
+    public void checkLectureDate() {
+        // 신청일이 특강일 이후라면 에러 반환
+        if (LocalDateTime.now().isAfter(this.lectureDateTime)) {
+            throw new CustomException(ErrorCode.LECTURE_REGISTRATION_CLOSED);
+        }
+    }
+
     public void checkCapacity() {
         // 정원이 남지 않았다면 에러 반환
         if (this.currentCapacity >= this.capacity) {

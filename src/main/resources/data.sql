@@ -1,5 +1,5 @@
 -- Lecture
-INSERT INTO lecture (id, lecture_title, lecturer, lecture_date_time) VALUES ('1', 'lecturer1', '허재코치', '2024-10-04 08:00:00');
+INSERT INTO lecture (id, lecture_title, lecturer, lecture_date_time) VALUES ('1', 'lecturer1', '허재코치', '2024-10-01 08:00:00');
 INSERT INTO lecture (id, lecture_title, lecturer, lecture_date_time) VALUES ('2', 'lecturer2', '헌우코치', '2024-10-04 10:00:00');
 INSERT INTO lecture (id, lecture_title, lecturer, lecture_date_time) VALUES ('3', 'lecturer3', '타일러코치', '2024-10-04 18:00:00');
 INSERT INTO lecture (id, lecture_title, lecturer, lecture_date_time) VALUES ('4', 'lecturer4', '려진코치', '2024-10-04 22:00:00');
