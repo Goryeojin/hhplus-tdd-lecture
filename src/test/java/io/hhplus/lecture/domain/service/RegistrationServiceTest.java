@@ -67,4 +67,20 @@ class RegistrationServiceTest {
         // then
         verify(registrationRepository).checkRegistered(LECTURE_ID, STUDENT_ID);
     }
+
+    @Test
+    void 특정_학생이_신청한_특강_목록_조회() {
+        // given
+        List<Registration> mockRegistrations = List.of(mock(Registration.class));
+
+        when(registrationRepository.findByStudentId(STUDENT_ID)).thenReturn(mockRegistrations);
+
+        // when
+        List<Registration> result = registrationService.registrations(STUDENT_ID);
+
+        // then
+        assertNotNull(result);
+        assertEquals(1, result.size());
+        verify(registrationRepository).findByStudentId(STUDENT_ID);
+    }
 }
