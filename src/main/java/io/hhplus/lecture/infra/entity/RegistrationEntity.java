@@ -28,7 +28,7 @@ public class RegistrationEntity {
     @JoinColumn(name = "lecture_id", nullable = false) // lecture_id가 외래키
     private LectureEntity lecture;
 
-    @Column(name = "registration_date", nullable = false)
+    @Column(name = "registration_date_time", nullable = false)
     private LocalDateTime registrationDate;
 
     public static RegistrationEntity of(Long lectureId, String studentId) {

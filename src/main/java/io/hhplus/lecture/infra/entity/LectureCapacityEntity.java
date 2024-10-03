@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDateTime;
 
@@ -21,8 +22,10 @@ public class LectureCapacityEntity {
     private Long lectureId;
 
     @Column(nullable = false)
+    @ColumnDefault("30")
     private int capacity;
 
     @Column(name = "current_count", nullable = false)
+    @ColumnDefault("0")
     private int currentCount;
 }
