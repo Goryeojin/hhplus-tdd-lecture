@@ -18,4 +18,17 @@ public class LectureService {
     public List<Lecture> lecturesAvailable(LocalDate lectureDate) {
         return repository.findAllAvailableByDate(lectureDate);
     }
+
+    // 특정 특강을 조회하고 수용 인원을 확인한다.
+    public Lecture checkStatus(Long lectureId) {
+        Lecture lecture = repository.findById(lectureId);
+        lecture.checkCapacity();
+        return lecture;
+    }
+
+    // 특정 특강의 상태를 변경한다.
+    public void incrementCapacity(Lecture lecture) {
+        Lecture updateLecture = lecture.incrementCapacity();
+        repository.incrementCapacity(updateLecture);
+    }
 }
